@@ -1,0 +1,125 @@
+﻿@model List<EmployeeCommon.Models.EmployeeModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#pnlMessage").fadeOut();
+        }, 5000);
+    });
+</script>
+
+<div>
+
+</div>
+
+<div class="row header-wrapper mb-2">
+</div>
+@*Search button*@
+<div class="row">
+    <div>
+        @if (!string.IsNullOrEmpty(ViewBag.msg) && (ViewBag.msg == "Employee Deleted Successfully" || ViewBag.msg.Contains("Unable to Access")))
+        {
+            <div id="pnlMessage" class="alert alert-danger">
+
+                @ViewBag.msg
+
+            </div>
+
+        }
+        else if (!string.IsNullOrEmpty(ViewBag.msg))
+        {
+            <div id="pnlMessage" class="alert alert-success">
+
+                @ViewBag.msg
+
+            </div>
+        }
+
+    </div>
+    
+    <div class="d-flex px-0">
+        <div class="col-lg-2">
+            <input type="text" id="txtSearch" class="form-control" MaxLength="20", placeholder="Keyword search" , Width="180" />
+            
+        </div>
+        <div class="col-lg-10 px-0 ">
+
+            <a href="#" id="lnkSearch" class="btn btn-primary col-lg-1 mb-2 mx-3 w-auto">Search</a>
+            
+            @if (!User.IsInRole("Customer"))
+            {
+                
+                <a href="/Default/Create" name="btnAdd" value="Add" id="btnAdd" class="add-btn btn btn-lg btn-primary col-lg-1" style="width:130px;margin-left: 75%;">Add</a>
+            }
+
+        </div>
+    </div>
+    
+
+</div>
+
+@Html.Partial("IndexPartial", Model)
+
+
+
+
+
+<div id="SearchResults" class="mb-3"></div>
+
+<div id="divLoader" class="text-center loading" style="display: none; z-index: 20">
+    <img src="~/Content/ajax_loader_blue_512.gif" />
+</div>
+
+<script type="text/javascript">
+
+
+    $('#lnkSearch').click(function () {
+            $("#divLoader").show();
+        var searchTerm = document.getElementById('txtSearch').value;
+        var myobj = document.getElementById("lvWrapper");
+        myobj.remove();
+    $.ajax({
+            url: "@Url.Action("Search","Default")" ,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        data: {'txtsearch' : searchTerm},     // JSON.stringify(searchTerm),
+        success: function(result) {
+            $('#SearchResults').html(result);
+            $("#divLoader").hide();
+                }
+            });
+     return false;
+});
+
+    function sortClick(SortColumn, IconClass, PageNo) {
+        $("#divLoader").show();
+        $("#lvWrapper").remove();
+       
+        debugger;
+        $.ajax({
+            type: "GET",
+            url: '/Default/SortList?SortColumn=' + SortColumn + '&IconClass=' + IconClass + '&PageNo=' + PageNo,
+
+            contentType: "application/json; charset=utf-8",
+
+            success: function (response) {
+                console.log(response);
+
+
+                $('#SearchResults').html(response);
+                $("#divLoader").hide();
+                //No window.location.reload(); It will cause page reload initial data will appear in grid.
+            },
+            error: function () { alert("error"); }
+        });
+
+    }
+
+
+
+
+
+</script>

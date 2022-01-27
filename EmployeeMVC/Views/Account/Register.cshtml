@@ -1,0 +1,133 @@
+﻿@model EmployeeCommon.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<section id="main-content">
+    <section class="wrapper justify-content-center mx-5 my-5">
+        <div class="login-form m-auto w-50">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel shadow-lg p-3 mb-5 bg-white rounded" style="background: radial-gradient(#9b9bd1, transparent);">
+                            <header class="hdn-panel">
+                                <div class="col-md-12 mb-5 text-center font-weight-bold col-md-offset-4">
+                                    <h1>Registration</h1>
+                                </div>
+
+                            </header>
+                            <!-- Validation Summary  -->
+
+                            @Html.ValidationSummary(false, "Sorry, there were problems with your submission. Please review these following items:", new { @class = "alert alert-danger text-danger", Id = "valSummary" })
+
+
+
+
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12  col-md-offset-1">
+                                        <!-- Employee Name -->
+                                        <div class="form-group row">
+                                            <label for="Username" id="lblEmpName" class="col-lg-3 pt-2"><b>User Name :</b><span style="color:red">*</span></label>
+                                            <div class="col-lg-9 mb-2">
+
+                                                @Html.TextBoxFor(m => m.Username, new { @class = "form-control input-sm", id = "txtUserName", maxlength = "20", placeholder = "Enter User Name" })
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-lg-12 my-2 col-md-offset-1">
+                                        <!-- Employee Email -->
+                                        <div class="form-group row">
+                                            <label for="txtEmail" id="lblEmail" class="col-lg-3 pt-2"><b>Email :</b><span style="color:red">*</span></label>
+                                            <div class="col-lg-9">
+
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-sm", id = "txtEmail", maxlength = "50", placeholder = "Enter Email Address" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Contact Details -->
+                                            <label for="txtCell" id="lblCell" class="col-lg-3 pt-2"><b>Cell No :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-9">
+
+                                                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control input-sm", id = "txtCell", maxlength = "20", type = "number", placeholder = "Enter Contact" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="col-md-12 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Contact Details -->
+                                            <label for="txtPassword" id="lblPassword" class="col-lg-3 col-md-12"><b>Enter Password :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6 pt-1">
+
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control input-sm ", id = "txtPassword", maxlength = "20", placeholder = "Enter Password" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Contact Details -->
+                                            <label for="txtCnfPassword" id="lblCnfPassword" class="col-lg-3 col-md-12 " ><b>Confirm Password :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6 pt-1">
+
+                                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control input-sm", id = "txtCnfPassword", maxlength = "20", placeholder = "Confirm Password" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                        <div class="col-md-12 col-md-offset-1">
+                                            <div class="form-group">
+                                                <!-- Buttons -->
+                                                <input type="submit" name="btnsave" value="Register" id="btnsave" class="btn btn-primary btn-lg" style="width:130px;">
+                                                <span>Already have an account?</span>
+                                                <a href="/Account/Login" id="lnkLogin" usesubmitbehavior="false">Login here</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+
+
+            }
+
+            </div>
+
+
+</section>
+
+</section>
+
+
+
+

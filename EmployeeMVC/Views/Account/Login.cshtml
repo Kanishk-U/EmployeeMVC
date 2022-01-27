@@ -1,0 +1,154 @@
+﻿@model EmployeeCommon.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper justify-content-center mx-5 my-5">
+        <div class="login-form m-auto w-50">
+            @*@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+            @*@using (Ajax.BeginForm("Login", "Account", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST",
+                LoadingElementId = "loader",
+                OnSuccess = "OnSuccess",
+                OnFailure = "OnLoginFailure",
+                UpdateTargetId = "login"
+
+
+            }, new { id = "login" }))
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        @Html.Partial("_login", Model)
+
+                    </div>
+                </div>
+
+
+
+            }*@
+
+
+            @* Login dummy *@
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="SearchResults"></div>
+                    <section id="login-sec" class="panel shadow-lg p-3 mb-5 bg-white rounded" style="background: radial-gradient(#9b9bd1, transparent); ">
+                        <header class="hdn-panel">
+                            <div class="col-md-12 text-center mb-5 col-md-offset-4 font-weight-bold">
+                                <h1>Log in</h1>
+                            </div>
+
+                        </header>
+                        <!-- Validation Summary  -->
+
+                        @Html.ValidationSummary(false, "Sorry, there were problems with your submission. Please review these following items:", new { @class = "alert alert-danger text-danger", Id = "valSummary" })
+
+
+
+
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12  col-md-offset-1">
+                                    <!-- Employee Name -->
+                                    <div class="form-group row">
+                                        <label for="FirstName" id="lblEmpName" class="col-lg-3 col-mb-3 mt-2 "><b>User Name :</b><span style="color:red">*</span></label>
+                                        <div class="col-lg-9 col-mb-9 mb-2">
+
+                                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control input-sm", id = "txtUserName", maxlength = "20", placeholder = "Enter User Name" })
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+                            <div class="row">
+
+
+
+                                <div class="col-md-12 col-lg-12 my-2 col-md-offset-1">
+                                    <div class="form-group row">
+                                        <!-- Contact Details -->
+                                        <label for="txtPassword" id="lblPassword" class="col-lg-3 col-md-3 mt-2 "><b>Password :</b><span style="color:red">*</span></label>
+
+                                        <div class="col-lg-9 col-md-9">
+
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control input-sm", id = "txtPassword", maxlength = "20", placeholder = "Enter Password" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <hr>
+                                    <div class="col-md-12 col-md-offset-1">
+                                        <div class="form-group">
+                                            <!-- Buttons -->
+                                            <input type="submit" name="btnLogin" value="Log in" id="btnLogin" class="btn btn-primary btn-lg" style="width:130px;">
+                                            <a href="/Account/Register" id="lnkRegister" usesubmitbehavior="false" class="mx-2 col-md-12 col-sm-12">Create an account</a>
+                                            @Html.ActionLink("Forgot Password?", "ForgotPassword")
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </section>
+    
+</section>
+<div id="divLoader" class="text-center loading" style="display:none;">
+    <img src="~/Content/ajax_loader_blue_512.gif" />
+</div>
+
+<script type="text/javascript">
+    
+    $('#btnLogin').click(function () {
+        debugger
+        
+        $("#divLoader").show();
+        var username = document.getElementById('txtUserName').value;
+        var password = document.getElementById('txtPassword').value;
+        var myobj = document.getElementById("login-sec");
+        myobj.remove();
+    $.ajax({
+            url: "@Url.Action("LoginValidation","Account")" ,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        data: { 'Username': username, "Password": password },     // JSON.stringify(searchTerm),
+        success: function (result) {
+            window.location = "@Url.Action("Index", "Default")";
+            
+        },
+        error: function (result) {
+            debugger
+            $('#SearchResults').html(result.responseText);
+            $("#divLoader").hide();
+        }
+            });
+     return false;
+});
+
+
+    
+</script>

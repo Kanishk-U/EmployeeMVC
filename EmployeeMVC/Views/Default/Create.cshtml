@@ -1,0 +1,265 @@
+﻿@model EmployeeCommon.ViewModels.EmployeeFileViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<section id="main-content">
+    <section class="wrapper justify-content-center mx-5">
+        @*<form method="post" action="/Default/Create" id="form1">*@
+            @using (Html.BeginForm("Create", "Default", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel shadow-lg p-3 mb-5 bg-white rounded">
+                            <header class="hdn-panel">
+                                <div class="col-md-12 mb-5 col-md-offset-4">
+                                    <h1>Employee Registration</h1>
+                                </div>
+
+                            </header>
+                            <!-- Validation Summary  -->
+                            
+                                @Html.ValidationSummary(false, "Sorry, there were problems with your submission. Please review these following items:", new { @class = "alert alert-danger text-danger", Id="valSummary" })
+                            
+
+
+
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12  col-md-offset-1">
+                                        <!-- Employee Name -->
+                                        <div class="form-group row">
+                                            <label for="FirstName" id="lblEmpName" class="col-lg-3"><b>Employee Name :</b><span style="color:red">*</span></label>
+                                            <div class="col-lg-3 mb-2">
+
+                                                @Html.TextBoxFor(m => m.Emp.FirstName, new { @class = "form-control input-sm", id = "txtFirstName", maxlength = "20", placeholder = "First Name" })
+
+
+                                            </div>
+                                            <div class="col-lg-3 mb-2">
+
+                                                @Html.TextBoxFor(m => m.Emp.MiddleName, new { @class = "form-control input-sm", id = "txtMiddleName", maxlength = "20", placeholder = "Middle Name" })
+                                            </div>
+                                            <div class="col-lg-3 mb-2">
+
+                                                @Html.TextBoxFor(m => m.Emp.LastName, new { @class = "form-control input-sm", id = "txtLastName", maxlength = "20", placeholder = "Last Name" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <!-- Employee Father Name -->
+                                        <div class="form-group row">
+                                            <label for="txtFather" id="lblFather" class="col-lg-3"><b>Father Name :</b><span style="color:red">*</span></label>
+                                            <div class="col-lg-6">
+
+                                                @Html.TextBoxFor(m => m.Emp.Father, new { @class = "form-control input-sm", id = "txtFather", maxlength = "20", placeholder = "Father Name" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <!-- Employee Email -->
+                                        <div class="form-group row">
+                                            <label for="txtEmail" id="lblEmail" class="col-lg-3"><b>Email :</b><span style="color:red">*</span></label>
+                                            <div class="col-lg-6">
+
+                                                @Html.TextBoxFor(m => m.Emp.Email, new { @class = "form-control input-sm", id = "txtEmail", maxlength = "20", placeholder = "Email Address" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <!-- Date of birth -->
+                                        <div class="form-group row">
+
+                                            <label for="txtdob" id="lbldob" class="col-lg-3"><b>DOB :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6">
+
+
+                                                @Html.TextBoxFor(m => m.Emp.DOB, new { @class = "form-control input-sm", id = "txtDOB", maxlength = "20", placeholder = "Date of birth", type = "date" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Program -->
+                                            <label for="txtProgram" id="lblProgram" class="col-lg-3"><b>Program :</b></label>
+
+                                            <div class="col-lg-6">
+
+                                                @Html.TextBoxFor(m => m.Emp.Program, new { @class = "form-control input-sm", id = "txtProgram", maxlength = "20", placeholder = "Program" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Region -->
+                                            <label for="ddlRegion" id="lblRegion" class="col-lg-3"><b>Region :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6">
+                                                @Html.DropDownListFor(m => m.Emp.Region, new SelectList(Enum.GetValues(typeof(EmployeeCommon.Models.Region))), "Select Region", new { @class = "form-control input-sm w-auto", id = "ddlRegion" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 mt-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Address -->
+                                            <label for="txtAddress" id="lblAddress" class="col-lg-3"><b>Address :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6 mb-2">
+
+                                                @Html.TextBoxFor(m => m.Emp.Address, new { @class = "form-control input-sm", id = "txtAddress", maxlength = "20", placeholder = "Address line 1" })
+                                            </div>
+                                            <div class="col-lg-6 mt-2 mb-2 offset-lg-3">
+
+                                                @Html.TextBoxFor(m => m.Emp.Address2, new { @class = "form-control input-sm", id = "txtAddress2", maxlength = "20", placeholder = "Address line 2" })
+                                            </div>
+                                            <div class="col-md-4 col-lg-12 col-md-offset-1">
+                                                <!-- City state zip -->
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3"></div>
+                                                    <div class="col-lg-3">
+
+                                                        @Html.TextBoxFor(m => m.Emp.City, new { @class = "my-2 form-control input-sm", id = "txtCity", maxlength = "20", placeholder = "City" })
+                                                    </div>
+                                                    <div class="col-lg-3">
+
+                                                        @Html.TextBoxFor(m => m.Emp.State, new { @class = "my-2 form-control input-sm", id = "txtState", maxlength = "20", placeholder = "State" })
+                                                    </div>
+                                                    <div class="col-lg-3">
+
+                                                        @Html.TextBoxFor(m => m.Emp.ZIP, new { @class = "my-2 form-control input-sm", id = "txtZIP", maxlength = "20", placeholder = "ZIP" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Contact Details -->
+                                            <label for="txtCell" id="lblCell" class="col-lg-3"><b>Cell No :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6">
+
+                                                @Html.TextBoxFor(m => m.Emp.Contact, new { @class = "form-control input-sm", id = "txtCell", maxlength = "20", type = "number", placeholder = "Contact" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Gender -->
+                                            <label for="txtGender" id="lblGender" class="col-lg-3"><b>Gender :</b><span style="color:red">*</span></label>
+
+                                            <div class="col-lg-6">
+                                                <table id="rbGender" class="form-group col-lg-6 ">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>@Html.RadioButtonFor(m => m.Emp.Gender, "Male")<label for="Gender">Male</label></td>
+                                                            <td>@Html.RadioButtonFor(m => m.Emp.Gender, "Female")<label for="Gender">Female</label></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Reporting -->
+                                            <label for="ddlReporting" id="lblReporting" class="col-lg-3"><b>Reporting to :</b></label>
+
+                                            <div class="col-lg-6">
+                                                <input list="suggestionList" id="answerInput" class= "form-control input-sm w-auto text-center" autocomplete="off" placeholder="Report to" >
+
+                                                <datalist id="suggestionList">
+                                                    @foreach (var emp in ViewBag.Reporting)
+                                                    {
+                                                        <option data-value="@emp.Id">@emp.FirstName</option>
+                                                    }
+
+                                                </datalist>
+                                                
+                                                @Html.HiddenFor(m => m.Emp.Reporting, new { id = "answerInput-hidden" })
+                                                @*@Html.DropDownListFor(M => M.Emp.Reporting, new SelectList(ViewBag.Reporting,"Id", "FirstName"),"--Report TO--",new {@class= "form-control input-sm w-auto",Id="ddlReporting" })*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-12 my-2 col-md-offset-1">
+                                        <div class="form-group row">
+                                            <!-- Reporting -->
+                                            <span id="lblFileUpload" class="col-lg-3"><b>Add attachment :</b></span>
+
+                                            <div class="col-lg-6">
+
+
+                                                @Html.TextBoxFor(m => m.File.files, new { Type = "file", id = "FileUpload" })
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <hr>
+                                        <div class="col-md-12 col-md-offset-1">
+                                            <div class="form-group">
+                                                <!-- Buttons -->
+                                                <input type="submit" name="btnsave" value="Save" id="btnsave" class="btn btn-primary btn-lg" style="width:130px;">
+                                                <a href="/Default/Index" id="lnkCancel" usesubmitbehavior="false">Cancel</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+
+
+            }
+
+        @*</form>*@
+
+
+    </section>
+
+</section>
+
+
+<script>
+    document.querySelector('input[list]').addEventListener('input', function (e) {
+        debugger
+        var input = e.target,
+            list = input.getAttribute('list'),
+            options = document.querySelectorAll('#' + list + ' option'),
+            hiddenInput = document.getElementById(input.getAttribute('id') + '-hidden'),
+            inputValue = input.value;
+
+        hiddenInput.value = inputValue;
+
+        for (var i = 0; i < options.length; i++) {
+            var option = options[i];
+
+            if (option.innerText === inputValue) {
+                hiddenInput.value = option.getAttribute('data-value');
+                break;
+            }
+        }
+    });
+</script>

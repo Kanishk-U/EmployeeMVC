@@ -1,0 +1,285 @@
+﻿
+
+    @*<div class="row bg-secondary text-white  text-uppercase text-center p-2 mt-3 hdrList">
+            <div class="col-lg-1" runat="server"></div>
+            <div class="col-lg-1" runat="server">
+
+
+
+                <a id="lbFirstName" class="text-decoration-none" href="">Name </a>
+
+
+            </div>
+            <div class="col-lg-3" runat="server">
+
+                <a id="lbEmail" class="text-decoration-none" href="">Email </a>
+            </div>
+            <div class="col-lg-2" runat="server">
+
+                <a id="lbDOB" class="text-decoration-none" href="">DOB </a>
+            </div>
+
+            <div class="col-lg-2" runat="server">
+
+                <a id="lbContact" class="text-decoration-none" href="">Contact </a>
+            </div>
+            <div class="col-lg-1 p-0" runat="server">
+
+                <a id="lbGender" class="text-decoration-none" href="">Gender </a>
+            </div>
+            <div class="col-lg-1 p-0" runat="server">
+
+                <a id="lbProgram" class="text-decoration-none" href="">Program </a>
+            </div>
+
+        </div>*@
+<div id="lvWrapper" class="mb-3">
+
+    <div class="row bg-secondary text-white  text-uppercase text-center p-2 mt-3 hdrList">
+
+        <div class="col-lg-1 col-md-1 col-sm-1" runat="server"></div>
+        <div class="col-lg-1 col-md-1 col-sm-1" runat="server">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="javascript:void(0)" onclick="sortClick('FirstName','fa-sort-asc','1')" id="lbName" class="">Name </a>
+
+                if (ViewBag.SortColumn == "FirstName")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="sortClick('FirstName','fa-sort-desc','1')" id="lbName" class="">Name</a>
+                if (ViewBag.SortColumn == "FirstName")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3" runat="server">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Email','fa-sort-asc','1')" id="lbEmail" class="">Email </a>
+
+                if (ViewBag.SortColumn == "Email")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Email','fa-sort-desc','1')" id="lbEmail" class="">Email </a>
+                if (ViewBag.SortColumn == "Email")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2" runat="server">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="javascript:void(0)" onclick="sortClick('DOB','fa-sort-asc','1')" id="lbDOB" class="">DOB </a>
+
+                if (ViewBag.SortColumn == "DOB")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="sortClick('DOB','fa-sort-desc','1')" id="lbDOB" class="">DOB </a>
+                if (ViewBag.SortColumn == "DOB")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+
+        </div>
+
+        <div class="col-lg-1 col-md-1 col-sm-1 p-0" runat="server">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Contact','fa-sort-asc','1')" id="lbContact" class="">Contact </a>
+
+                if (ViewBag.SortColumn == "Contact")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Contact','fa-sort-desc','1')" id="lbContact" class="">Contact </a>
+                if (ViewBag.SortColumn == "Contact")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+
+        </div>
+        <div class="col-lg-2 p-0 col-md-2 col-sm-2" runat="server">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Gender','fa-sort-asc','1')" id="lbGender" class="">Gender </a>
+
+                if (ViewBag.SortColumn == "Gender")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Gender','fa-sort-desc','1')" id="lbGender" class="">Gender </a>
+                if (ViewBag.SortColumn == "Gender")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+
+        </div>
+        <div class="col-lg-2 p-0 col-md-2 col-sm-2" runat="server">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Program','fa-sort-asc','1')" id="lbProgram" class="">Program </a>
+
+                if (ViewBag.SortColumn == "Program")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="sortClick('Program','fa-sort-desc','1')" id="lbProgram" class="">Program </a>
+                if (ViewBag.SortColumn == "Program")
+                {
+                    <i class="fa @ViewBag.IconClass" aria-hidden="true"></i>
+                }
+            }
+
+        </div>
+
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="row my-2 border border-dark text-center">
+
+            <h2 class="text-danger">No data available at the moment</h2>
+
+        </div>
+    }
+
+    @foreach (var emp in Model)
+    {
+<div id="EmpRow" class="row alternative_cls my-2 border border-dark  text-center">
+    @if (!User.IsInRole("Customer"))
+    {
+        <div class="col-lg-1 col-md-1 col-sm-1">
+
+
+            <div class="dropdown">
+                <button class="btn btn-sm bg-success text-white dropdown-toggle" type="button" id="ddAction" data-bs-toggle="dropdown" aria-expanded="false">
+                    Action
+                </button>
+                <ul class="dropdown-menu p-0 b=0 bg-transparent border-0" aria-labelledby="dropdownMenuButton1">
+                    <li>
+
+                        <a href="/Default/Edit/@emp.Id" name="Edit" id="btnEdit" class="w-75 w3-bar-item bg-primary btn btn-sm text-white">Edit</a>
+                    </li>
+                    @if (!User.IsInRole("Manager"))
+                    {
+                        <li>
+                            <a href="/Default/Delete/@emp.Id" name="Delete" id="btnDelete" class="w-75 w3-bar-item bg-danger btn btn-sm text-white">Delete</a>
+
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-lg-1" runat="server"></div>
+    }
+
+    <div class="col-lg-1 pt-1 col-md-1 col-sm-1">
+        <label>@emp.FirstName</label>
+    </div>
+    <div class="col-lg-3 pt-1 col-md-3 col-sm-3">
+        <label>@emp.Email</label>
+    </div>
+    <div class="col-lg-2 pt-1 col-md-2 col-sm-2">
+        <label>@emp.DOB</label>
+    </div>
+
+    <div class="col-lg-1 pt-1 col-md-1 col-sm-1">
+        <label>@emp.Contact</label>
+    </div>
+    <div class="col-lg-2 pt-1 col-md-2 col-sm-2">
+        <label>@emp.Gender</label>
+    </div>
+    <div class="col-lg-2 px-0 pt-1 col-md-2 col-sm-2">
+        <label>@emp.Program</label>
+    </div>
+
+
+
+</div>
+    }
+
+
+    @if (ViewBag.Records > Model.Count)
+    {
+        <div class="row">
+            @{
+                int PrevPageNo = ViewBag.PageNo - 1;
+                if (PrevPageNo <= 0)
+                {
+                    PrevPageNo = 1;
+                    @Html.Hidden("PrevPageNo", PrevPageNo, new { id = "nxt" })
+                }
+
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                    @Html.Hidden("NextPageNo", NextPageNo, new { id = "pre" });
+                }
+            }
+            <ul class="pagination justify-content-left">
+                <li class="page-item">
+                    <a id="prevPage" class="page-link" href="#" onclick="sortClick('@ViewBag.SortColumn','@ViewBag.IconClass','@PrevPageNo')">Prev</a> @**@
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if ((i + 1) == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="#" onclick="sortClick('@ViewBag.SortColumn','@ViewBag.IconClass','@(i + 1)')">@( i + 1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="sortClick('@ViewBag.SortColumn','@ViewBag.IconClass','@(i + 1)')">@( i + 1)</a>
+                        </li>
+                    }
+                }
+            <li class="page-item">
+                <a id="nxtPage" class="page-link" href="#" onclick="sortClick('@ViewBag.SortColumn','@ViewBag.IconClass','@NextPageNo')">Next</a> @*/Default/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@NextPageNo*@
+            </li>
+            </ul>
+        </div>
+    }
+    else
+    {
+
+    }
+
+
+
+</div>

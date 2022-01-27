@@ -1,0 +1,93 @@
+﻿
+
+<div id="lvWrapper" class="mb-3">
+
+    <div class="row bg-secondary text-white  text-uppercase text-center p-2 mt-3 hdrList">
+        <div class="col-lg-1" runat="server"></div>
+        <div class="col-lg-1" runat="server">
+
+
+
+            <a id="lbFirstName" class="text-decoration-none" href="">Name </a>
+
+
+        </div>
+        <div class="col-lg-3" runat="server">
+
+            <a id="lbEmail" class="text-decoration-none" href="">Email </a>
+        </div>
+        <div class="col-lg-2" runat="server">
+
+            <a id="lbDOB" class="text-decoration-none" href="">DOB </a>
+        </div>
+
+        <div class="col-lg-2" runat="server">
+
+            <a id="lbContact" class="text-decoration-none" href="">Contact </a>
+        </div>
+        <div class="col-lg-1 p-0" runat="server">
+
+            <a id="lbGender" class="text-decoration-none" href="">Gender </a>
+        </div>
+        <div class="col-lg-1 p-0" runat="server">
+
+            <a id="lbProgram" class="text-decoration-none" href="">Program </a>
+        </div>
+
+    </div>
+
+    @if (ViewBag.ReportingEmployee.Count==0)
+    {
+        <div class="row my-2 border border-dark text-center">
+
+            <h2 class="text-danger">No data available at the moment</h2>
+
+        </div>
+    }
+
+    @foreach (var emp in ViewBag.ReportingEmployee)
+    {
+        <div class="row my-2 border border-dark bg-white text-center">
+            <div class="col-lg-1">
+
+
+                <div class="dropdown">
+                    <button class="btn btn-sm bg-success text-white dropdown-toggle" type="button" id="ddAction" data-bs-toggle="dropdown" aria-expanded="false">
+                        Action
+                    </button>
+                    <ul class="dropdown-menu p-0 b=0 bg-transparent border-0" aria-labelledby="dropdownMenuButton1">
+                        <li>
+
+                            <a href="/Default/Edit/@emp.Id" name="Edit" id="btnEdit" class="w-75 w3-bar-item bg-primary btn btn-sm text-white">Edit</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-1 pt-1">
+                <label>@emp.FirstName</label>
+            </div>
+            <div class="col-lg-3 pt-1">
+                <label>@emp.Email</label>
+            </div>
+            <div class="col-lg-2 pt-1">
+                <label>@emp.DOB</label>
+            </div>
+
+            <div class="col-lg-2 pt-1">
+                <label>@emp.Contact</label>
+            </div>
+            <div class="col-lg-1 pt-1">
+                <label>@emp.Gender</label>
+            </div>
+            <div class="col-lg-1 px-0 pt-1">
+                <label>@emp.Program</label>
+            </div>
+
+
+
+        </div>
+    }
+
+</div>
