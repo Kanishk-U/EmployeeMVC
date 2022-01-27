@@ -20,7 +20,7 @@ namespace EmployeeMVC.Controllers
     {
         #region === [ Default Parameters ] ===========================================================
         private IEmployeeManager employeeManager;
-        log4net.ILog logger = log4net.LogManager.GetLogger(typeof(DefaultController));  //Declaring Log4Net
+        log4net.ILog logger = log4net.LogManager.GetLogger(typeof(DefaultController));  //Declaring Log4Net for tracking errors and warnings
         /// <summary>
         /// Default Constructor
         /// </summary>
