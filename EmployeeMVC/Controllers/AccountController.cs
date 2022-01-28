@@ -25,7 +25,7 @@ namespace EmployeeMVC.Controllers
         }
 
         #region private
-        private string cred = "Omnamahshivay@1";
+        private string cred = "**************";
         #endregion
 
 
